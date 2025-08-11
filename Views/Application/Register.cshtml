@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Register Application";
+}
+
+<h2>Register Application</h2>
+
+<form asp-action="Register" method="post">
+    <div class="form-group">
+        <label for="name">Application Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Enter application name" required />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="text-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
